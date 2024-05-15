@@ -11,18 +11,13 @@ import NotificationList from './chapter_06/NotificationList';
 import Accomodate from './chapter_07/Accomodate';
 import ConfirmButton from './chapter_08/ConfirmButton';
 import LandingPage from './chapter_09/LandingPage';
+import Calculator from './chapter_12/Calculator';
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <React.StrictMode>
-    <Library />
-    <Clock />
-    <CommentList />
-    <NotificationList />
-    <Accomodate />
-    <ConfirmButton />
-    <LandingPage />
+    <Calculator />
   </React.StrictMode>
 );
 
