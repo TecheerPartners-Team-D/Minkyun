@@ -6,19 +6,18 @@ function DarkOrLight(props) {
     const [theme, setTheme] = useState("light");
 
     const toggleTheme = useCallback(() => {
-        if(theme == "light") {
-        setTheme("dark");
-    } else if(theme == "dark") {
-        setTheme("light");
-    }
-}, [theme]);
+        if (theme == "light") {
+            setTheme("dark");
+        } else if (theme == "dark") {
+            setTheme("light");
+        }
+    }, [theme]);
 
-return (
-    <ThemeContext.provider value={{ theme, toggleTheme }}>
-        <MainContent />
-    </ThemeContext.provider>
-);
+    return (
+        <ThemeContext.Provider value={{ theme, toggleTheme }}>
+            <MainContent />
+        </ThemeContext.Provider>
+    );
 }
 
 export default DarkOrLight;
-
