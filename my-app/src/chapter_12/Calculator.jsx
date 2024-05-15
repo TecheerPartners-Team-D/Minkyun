@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import TemperatureInput from "./TemperatureInput";
 
 function BoilingVerdict(props) {
-    if(props.celsius >= 100) {
+    if (props.celsius >= 100) {
         return <p>물이 끓습니다.</p>;
     }
     return <p>물이 끓지 않습니다.</p>;
 }
 
-function toCelius(fahrenheit) {
+function toCelsius(fahrenheit) {
     return ((fahrenheit - 32) * 5) / 9;
 }
 
@@ -18,10 +18,10 @@ function toFahrenheit(celsius) {
 
 function tryConvert(temperature, convert) {
     const input = parseFloat(temperature);
-    if(Number.isNaN(input)) {
+    if (Number.isNaN(input)) {
         return "";
     }
-    const output = conver(input);
+    const output = convert(input);
     const rounded = Math.round(output * 1000) / 1000;
     return rounded.toString();
 }
@@ -30,7 +30,7 @@ function Calculator(props) {
     const [temperature, setTemperature] = useState("");
     const [scale, setScale] = useState("c");
 
-    const handleCelciusChange = (temperature) => {
+    const handleCelsiusChange = (temperature) => {
         setTemperature(temperature);
         setScale("c");
     };
@@ -40,22 +40,22 @@ function Calculator(props) {
         setScale("f");
     };
 
-    const celsius = 
-    scale === "f" ? tryConvert(temperature, toCelius) : temperature;
+    const celsius =
+        scale === "f" ? tryConvert(temperature, toCelsius) : temperature;
     const fahrenheit =
-    scale === "c" ? tryConvert(temperature, toFahrenheit) : temperature;
+        scale === "c" ? tryConvert(temperature, toFahrenheit) : temperature;
 
     return (
         <div>
             <TemperatureInput
-            scale="c"
-            temperature={celsius}
-            onTemperatureChange={handleCelciusChange}
+                scale="c"
+                temperature={celsius}
+                onTemperatureChange={handleCelsiusChange}
             />
             <TemperatureInput
-            scale="f"
-            temperature={fahrenheit}
-            onTemperatureChange={handleFahrenheitChange}
+                scale="f"
+                temperature={fahrenheit}
+                onTemperatureChange={handleFahrenheitChange}
             />
             <BoilingVerdict celsius={parseFloat(celsius)} />
         </div>
